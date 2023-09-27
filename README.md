@@ -82,6 +82,7 @@ The project cycles were divided into the following phases:
 - Data Preparation
 - Model Training
 - Model Evaluation
+- Model Deployment
 - Business Performance
 
 # Data Understanding
@@ -182,6 +183,19 @@ I used Accuracy, Precision, Recall and F1-Score metrics to evaluate my model, th
 | Precision   | 0.8492 |
 | Recall   | 0.8418 |
 |  F1 Score | 0.8455 |
+
+## Introducing the Neutral Sentiment Category
+
+Upon analyzing the predictions of our model, I observed that for certain reviews, the model exhibited uncertainty or lacked strong confidence in its predictions. To accommodate such instances and offer a more nuanced classification, I've introduced a "Neutral" sentiment category.
+
+The revised sentiment labeling based on the model's probability output is as follows:
+
+- **Positive Sentiment**: When there's over 60% probability for a positive outcome.
+- **Negative Sentiment**: When the positive probability is less than 40%.
+- **Neutral Sentiment**: For cases where the model's positive probability lies between 40% and 60%, indicating a level of uncertainty.
+
+This approach ensures a more comprehensive and nuanced analysis of reviews, capturing sentiments that may not strictly fall into the traditional positive or negative categories.
+
 
 # Deploy to Production
 I deployed the model in Streamlit Sharing so you can test some reviews for yourself! Here is an example:
