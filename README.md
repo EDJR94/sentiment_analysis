@@ -183,6 +183,13 @@ I used Accuracy, Precision, Recall and F1-Score metrics to evaluate my model, th
 | Recall   | 0.8418 |
 |  F1 Score | 0.8455 |
 
+# Deploy to Production
+I deployed the model in Streamlit Sharing so you can test some reviews for yourself! Here is an example:
+
+![gif_streamlit](https://github.com/EDJR94/sentiment_analysis/assets/128603807/35e4eaa6-d401-4b9d-86a9-a5305c2395ef)
+
+Try to trick it by writing some tricky reviews! Link: [Streamlit](https://appsentiment-6pkqwypnalszzgk2kp9br7.streamlit.app/).
+
 # Business Performance
 
 ## Assumptions
