@@ -60,13 +60,12 @@ A successful solution will showcase a significant improvement in the **Recall me
 
 # Data
 
-| Column Name | Description |
-| --- | --- |
-| sentiment | Integer identifying one of 2 sentiments:      
-1: Negative
-2: Positive |
-| title | Title of the review |
-| text | Review text |
+| Column Name | Description                                   |
+|-------------|-----------------------------------------------|
+| sentiment   | Integer identifying one of 2 sentiments:<br>1: Negative<br>2: Positive |
+| title       | Title of the review                           |
+| text        | Review text                                   |
+
 
 # Solution Strategy
 
