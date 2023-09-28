@@ -152,6 +152,17 @@ Original Sentiment: Negative
 Predicted Sentiment: Positive
 ```
 
+## Finding Optimal Threshold for Recall Metric
+By analyzing the model's error, I observed that the majority of errors occur when the probability for the positive class falls between 40% and 60%. This range is where the model tends to make the most mistakes, as illustrated in the graphs below:
+
+![Captura de tela 2023-09-28 172927](https://github.com/EDJR94/sentiment_analysis/assets/128603807/b83d4a2b-2c36-413d-9a81-7a390592f149)
+
+![Captura de tela 2023-09-28 172949](https://github.com/EDJR94/sentiment_analysis/assets/128603807/1ec2e31e-0d70-4519-a0dd-444dd655c0af)
+
+I decided that, for increasing the recall the most, I will classify these uncertain probabilities as Negative, so my final threshold is 0.6:
+- If Probability more than 60% -> Positive Sentiment
+- If Probability less than 60% -> Negative Sentiment 
+
 ### Confusion Matrix
 
 My data as divided as follows:
@@ -162,11 +173,11 @@ My data as divided as follows:
 
 Here is the confusion matrix for the Validation Set:
 
-![Untitled (5)](https://github.com/EDJR94/sentiment_analysis/assets/128603807/861c0ada-b015-4346-8593-05266d6cacad)
+![confusion_matrix_val2](https://github.com/EDJR94/sentiment_analysis/assets/128603807/b99e3bf4-eb9e-45ee-a40f-7fc40025f8c7)
 
 And for the Test Dataset:
 
-![Untitled (6)](https://github.com/EDJR94/sentiment_analysis/assets/128603807/3863e5af-ae87-4edd-bf03-4b27ce44ffe3)
+![confusion_matrix_test2](https://github.com/EDJR94/sentiment_analysis/assets/128603807/831a483d-0da6-4735-90f7-9009bc1e0c5c)
 
 Looking at the Test Confusion Matrix, we can see that our model correctly classified 16,836 positives reviews of the 20.000 Positive reviews.
 
@@ -178,12 +189,13 @@ I used Accuracy, Precision, Recall and F1-Score metrics to evaluate my model, th
 
 | Metric    | Value |
 | --- | --- |
-| Accuracy   | 0.8462 |
-| Precision   | 0.8492 |
-| Recall   | 0.8418 |
-|  F1 Score | 0.8455 |
+| Accuracy   | 0.8404 |
+| Precision   | 0.8060 |
+| Recall   | 0.8967 |
+|  F1 Score | 0.8489 |
 
-## Introducing the Neutral Sentiment Category
+## Introducing the Neutral Sentiment Category for User Deployment
+I made an App on Streamlit for users to try some reviews and get the sentiment.
 
 Upon analyzing the predictions of our model, I observed that for certain reviews, the model exhibited uncertainty or lacked strong confidence in its predictions. To accommodate such instances and offer a more nuanced classification, I've introduced a "Neutral" sentiment category.
 
@@ -220,8 +232,8 @@ Try to trick it by writing some tricky reviews! Link: [Streamlit](https://appsen
 ## Recall: Before vs. After the Model Implementation
 
 - Without the model in place, Amazon faces a potential loss of **100 customers daily**, translating to a revenue loss of **100 x $500 = $50,000 daily**.
-- With the model's deployment, the recall rate surges to **84%**. This means Amazon now captures feedback from **84 of the camouflaged negative reviews daily**, missing only 16 such reviews.
-- By this metric, instead of losing $50,000 daily, the model helps Amazon salvage 84 x $500 = $42,000 each day. Annually, this amounts to a substantial recovery of **$15,330,000**!
+- With the model's deployment, the recall rate surges to **89%**. This means Amazon now captures feedback from **84 of the camouflaged negative reviews daily**, missing only 11 such reviews.
+- By this metric, instead of losing $50,000 daily, the model helps Amazon salvage 89 x $500 = $44,500 each day. Annually, this amounts to a substantial recovery of **$16,242,500**!
 
 # References
 
