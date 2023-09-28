@@ -153,13 +153,15 @@ Predicted Sentiment: Positive
 ```
 
 ## Finding Optimal Threshold for Recall Metric
-By analyzing the model's error, I observed that the majority of errors occur when the probability for the positive class falls between 40% and 60%. This range is where the model tends to make the most mistakes, as illustrated in the graphs below:
+By analyzing the model's error, I observed that the majority of errors occur when the probability for the positive class falls between 40% and 60%. This range is where the model tends to make the most mistakes. The graphs below display the model's errors, as well as the count of errors corresponding to the predicted probability of a positive sentiment:
 
 ![Captura de tela 2023-09-28 172927](https://github.com/EDJR94/sentiment_analysis/assets/128603807/b83d4a2b-2c36-413d-9a81-7a390592f149)
 
 ![Captura de tela 2023-09-28 172949](https://github.com/EDJR94/sentiment_analysis/assets/128603807/1ec2e31e-0d70-4519-a0dd-444dd655c0af)
 
-I decided that, for increasing the recall the most, I will classify these uncertain probabilities as Negative, so my final threshold is 0.6:
+The Density graph makes clear that most errors occurs when the probability is around 40% to 60%.
+
+To maximize recall, I've chosen to classify uncertain probabilities as Negative. Consequently, my **final threshold** is set at 0.6:
 - If Probability more than 60% -> Positive Sentiment
 - If Probability less than 60% -> Negative Sentiment 
 
@@ -181,7 +183,7 @@ And for the Test Dataset:
 
 Looking at the Test Confusion Matrix, we can see that our model correctly classified 16,836 positives reviews of the 20.000 Positive reviews.
 
-Also, it correctly classified 17,010 Negative reviews of the 20.000 total Negative reviews.
+Also, it correctly classified 17,934 Negative reviews of the 20.000 total Negative reviews.
 
 ### Classification Metrics
 
@@ -195,7 +197,7 @@ I used Accuracy, Precision, Recall and F1-Score metrics to evaluate my model, th
 |  F1 Score | 0.8489 |
 
 ## Introducing the Neutral Sentiment Category for User Deployment
-I made an App on Streamlit for users to try some reviews and get the sentiment.
+"I've developed an app using Streamlit where users can input reviews and instantly receive sentiment analysis results.
 
 Upon analyzing the predictions of our model, I observed that for certain reviews, the model exhibited uncertainty or lacked strong confidence in its predictions. To accommodate such instances and offer a more nuanced classification, I've introduced a "Neutral" sentiment category.
 
